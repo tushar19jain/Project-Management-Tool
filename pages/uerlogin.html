@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Project Management Tool - Employe login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<header class="bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pr-8 pl-8 pt-8 pb-8 items-center shadow-xxl">
+    <div class="logo">
+        <h1 class="ui-monospace font-bold font-mono text-sky-950 ">Project Management Tool</h1>
+    </div>
+    <div>
+        <ul class="flex flex-row m-3 justify-between gap-10">
+            <li><a href="#"><i class="fa-solid fa-house fa-lg" style="color: #000000;"></i></a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: #000000;"></i></a></li>
+        </ul>
+    </div>
+</header>
+        <main class="flex flex row justify-around mt-6 items-center">
+            <div class="userHeroIMg"data-aos="fade-right">
+                <img src="https://img.freepik.com/premium-vector/data-security-concept-illustration_251005-467.jpg" alt="" srcset="">
+            </div>
+        <div class></div>
+        <form action="/login-user" method="post" class="p-5 rounded-md shadow-xl p-5 rounded-md" data-aos="fade-left">
+        <input class="p-3 m-2 bg-slate-200" type="text" name="UserName" id="username" placeholder="Username"><br>
+        <input class="p-3 m-2 bg-slate-200" type="PassWord" name="PassWord" id="password"placeholder="Password"><br>
+        <input class="rounded-lg mt-8 ml-2 p-2 shadow-m bg-blue-400 text-white cursor-pointer" type="submit" value="Login">
+        <h3 class="text-sky-950 mt-3 ml-2" >Not registered ? <a href="http://localhost:5000/register">register.</a></h3>
+</form>
+</div>
+        </main>
+</body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</html>

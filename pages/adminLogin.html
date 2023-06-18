@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Project Management Tool - Admin</title>
+</head>
+<body class="bg-white">
+    <header class="bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pr-8 pl-8 pt-8 pb-8 items-center shadow-xxl">
+        <div class="logo">
+            <h1 class="ui-monospace font-bold text-sky-950 ">Project Management Tool</h1>
+        </div>
+        <div>
+            <ul class="flex flex-row m-3 justify-between gap-10">
+                <li><a href="#"><i class="fa-solid fa-house fa-lg" style="color: #000000;"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: #000000;"></i></a></li>
+            </ul>
+        </div>
+    </header>
+   <main class="flex flex-row justify-center items-center justify-around mt-4">
+    <div class="hero2"data-aos="fade-right">
+        <img src="https://img.freepik.com/free-vector/dashboard-concept-illustration_114360-1447.jpg?w=740&t=st=1687018472~exp=1687019072~hmac=4ed19e8c0a981d1a98698bfaad2e9348a6794ff0aa5013c9b77975295a539730" alt="" srcset="">
+    </div>
+    <div class="loginForm bg-white"></div>
+    <form action="/login" method="post" class="p-5 rounded-md shadow-xl p-5 rounded-md" data-aos="fade-left">
+        <input class="p-3 m-2 bg-slate-100" type="text" name="username" id="username" placeholder="Username"><br>
+        <input class="p-3 m-2 bg-slate-100" type="password" name="password" id="password"placeholder="Password"><br>
+        <input class="rounded-lg mt-8 ml-2 p-2 shadow-m bg-blue-400 text-white cursor-pointer" type="submit" value="Login">
+</form>
+</div>
+   </main>
+</body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</html>

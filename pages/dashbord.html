@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+    form{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0.25rem;
+}
+    form input{
+    border: 0;
+    padding: 0.5rem;
+    width: 100%;
+    outline: 0;
+    margin-right: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #ccc;
+}
+    form button{
+        width: 6rem;
+        background-color: #1b8c00;
+        color: white;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+        border-radius: 0.25rem;
+        text-transform: uppercase;
+    }
+    form button:hover{
+        background-color: #166d01;
+    }
+    .messages li{
+        padding: 0.5rem;
+    }
+    .messages li:nth-child(odd){
+        background: #eee;
+    }
+    </style>
+</head>
+<body class="bg-white">
+    <header class="bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pr-8 pl-8 pt-8 pb-8 items-center shadow-xxl">
+        <div class="logo">
+            <h1 class="ui-monospace font-bold font-mono text-sky-950 ">Project Management Tool</h1>
+        </div>
+        <div>
+            <ul class="flex flex-row m-3 justify-between gap-10">
+                <li><a href="#"><i class="fa-solid fa-house fa-lg" style="color: #000000;"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: #000000;"></i></a></li>
+                <li><a href="http://localhost:5000/tasks">Tasks</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="chat">
+    <ul class="messages"></ul>
+    <main>
+        <form>
+            <input type="text" class="input" autocomplete="off" autofocus><br>
+            <button>Send</button>
+        </form>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+        const form = document.querySelector("form");
+           const input = document.querySelector('input')
+           const messages = document.querySelector(".messages");
+           const username = prompt("Please enter your name"," ");
+            const socket = io();
+           
+            form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+        
+            addMessage(username + ":" + input.value);
+            socket.emit("chat_message",{
+               message : input.value
+            })
+            input.value =" ";
+            return false;
+        },false);
+        socket.on("chat_message",function(data){
+           addMessage(data.username + "':"+ data.message);
+        });
+        socket.on("user_join",function(data){
+           addMessage(data +" " + "just joined the chat")
+        });
+        socket.on("user_leave",function(data){
+           addMessage(data+ "'has left the chat")
+        })
+        addMessage("You have joined the chat as '" + username + "'.");
+        socket.emit("user_join", username);
+        function addMessage(message){
+            const li = document.createElement("li");
+            li.innerHTML = message;
+            messages.appendChild(li);
+            window.scrollTo(0,document.body.scrollHeight);
+        }
+   </script>
+   </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Project Management Tool</title>
+</head>
+<body class="bg-white ">
+    <header class="bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-between pr-8 pl-8 pt-8 pb-8 items-center shadow-xxl">
+        <div class="logo">
+            <h1 class="ui-monospace font-bold font-mono text-sky-950 ">Project Management Tool</h1>
+        </div>
+        <div>
+            <ul class="flex flex-row m-3 justify-between gap-10">
+                <li><a href="#"><i class="fa-solid fa-house fa-lg" style="color: #000000;"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-linkedin fa-lg" style="color: #000000;"></i></a></li>
+            </ul>
+        </div>
+    </header>
+    <main class="flex flex-row justify-around pr-6 pl-4 pt-6 pb-6 items-center mt-10">
+        <div class="heroImg">
+            <img id="heroMain" class="drop-shadow-md" src="https://img.freepik.com/free-vector/blogging-concept-illustration_114360-1038.jpg?w=740&t=st=1687018110~exp=1687018710~hmac=d7e86320f5dafbf52534889f3e6cabf897c1e923dbb5ed7f4fe558e8e01df967" alt="cant load image" srcset="">
+        </div>
+        <div class="logsinUp">
+            <h1 class="text-xl">Log in to your account to start <span class="text-sky-500">communication.</span></h1>
+            <ul class="flex flex-row justify-around mt-4">
+                <li><button class="bg-cyan-400 text-sky-50 p-2 rounded-lg shadow-xl"><a href="http://localhost:5000/Auth">Admin Login</a></button></li>
+                <li><button class="bg-blue-400 text-sky-50 p-2 rounded-lg shadow-xl"><a href="http://localhost:5000/Auth/User">Employee Login</a></button></li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

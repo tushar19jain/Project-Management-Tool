@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Project Management Tool - Assign Taks</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com/dist/tailwind.min.css">
+  </head>
+  <body>
+    <div class="container mx-auto pt-6">
+      <h1 class="text-3xl font-bold mb-6">Assign task to employee</h1>
+
+      <form id="task-form">
+        <div class="flex mb-4">
+          <input
+            type="text"
+            id="task-input"
+            name="task"
+            class="flex-1 mr-2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Add Task"
+          />
+          <button
+            type="submit"
+            class="py-2 px-4 bg-blue-500 text-white font-semibold rounded shadow hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+
+      <ul id="task-list" class="list-disc ml-8 p-3"></ul>
+    </div>
+
+    <script>
+
+const form = document.querySelector('#task-form');
+const taskInput = document.querySelector('#task-input');
+const taskList = document.querySelector('#task-list');
+
+// Load all event listeners
+loadEventListeners();
+
+// Load all event listeners
+function loadEventListeners() {
+  // DOM Load event
+  document.addEventListener('DOMContentLoaded', getTasks);
+  // Add task event
+  form.addEventListener('submit', addTask);
+  // Remove task event
+  taskList.addEventListener('click', removeTask);
+}
+
+// Get Tasks from Local Storage
+function getTasks() {
+  let tasks;
+  if (localStorage.getItem('tasks') === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+  tasks.forEach(function(task) {
+    // Create li element
+    const li = document.createElement('li');
+    // Add class
+    li.className = 'mb-2';
+    // Create text node and append to li
+    li.appendChild(document.createTextNode(task));
+    // Create delete button element
+    const deleteBtn = document.createElement('button');
+    // Add classes to delete button
+    deleteBtn.className = 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline';
+    // Add text node to delete button
+    deleteBtn.appendChild(document.createTextNode('Delete'));
+    // Append button to li
+    li.appendChild(deleteBtn);
+    // Append li to ul
+    taskList.appendChild(li);
+  });
+}
+
+// Add Task
+function addTask(e) {
+  if (taskInput.value === '') {
+    alert('Please add a task');
+  } else {
+    // Create li element
+    const li = document.createElement('li');
+    // Add class
+    li.className = 'mb-2';
+    // Create text node and append to li
+    li.appendChild(document.createTextNode(taskInput.value));
+    // Create delete button element
+    const deleteBtn = document.createElement('button');
+    // Add classes to delete button
+    deleteBtn.className = 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline';
+    // Add text node to delete button
+    deleteBtn.appendChild(document.createTextNode('Delete'));
+    // Append button to li
+    li.appendChild(deleteBtn);
+    // Append li to ul
+    taskList.appendChild(li);
+
+    // Store in Local Storage
+    storeTaskInLocalStorage(taskInput.value);
+
+    // Clear input
+    taskInput.value = '';
+  }
+
+  e.preventDefault();
+}
+
+// Store Task in Local Storage
+function storeTaskInLocalStorage(task) {
+  let tasks;
+  if (localStorage.getItem('tasks') === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+  tasks.push(task);
+
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Remove Task
+function removeTask(e) {
+  if (e.target.classList.contains('bg-red-500')) {
+    if (confirm('Are you sure?')) {
+      e.target.parentElement.remove();
+
+      // Remove from Local Storage
+      removeTaskFromLocalStorage(e.target.parentElement);
+    }
+  }
+}
+
+// Remove from Local Storage
+function removeTaskFromLocalStorage(taskItem) {
+  let tasks;
+  if (localStorage.getItem('tasks') === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+  tasks.forEach(function(task, index) {
+    if (taskItem.textContent === task) {
+      tasks.splice(index, 1);
+    }
+  });
+
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+    </script>
+  </body>
+</html>
